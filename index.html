@@ -1,172 +1,577 @@
-# 💰 PLANILHA ORÇAMENTÁRIA INTERATIVA
-**Plano Financeiro Mensal | Meta: Investir 20% do Salário**
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilha Orçamentária - Excel 365</title>
+    <style>
+        body {
+            font-family: Calibri, Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .section-header {
+            background-color: #f3f4f6;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #374151;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section-content {
+            padding: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: bold;
+            color: #374151;
+        }
+        .value {
+            text-align: right;
+            font-weight: bold;
+        }
+        .total-row {
+            background-color: #fef3c7;
+            font-weight: bold;
+        }
+        .priority {
+            background-color: #dcfce7;
+        }
+        .warning {
+            background-color: #fef2f2;
+        }
+        .info {
+            background-color: #eff6ff;
+        }
+        .formula {
+            font-family: 'Courier New', monospace;
+            background-color: #f3f4f6;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #cbd5e1;
+        }
+        .kpi-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e40af;
+        }
+        .kpi-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 5px;
+        }
+        .excel-note {
+            background-color: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .control-table td {
+            text-align: center;
+        }
+        .status-pending {
+            color: #dc2626;
+            font-weight: bold;
+        }
+        .status-done {
+            color: #16a34a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>PLANILHA ORÇAMENTÁRIA - EXCEL 365</h1>
+            <p>Plano Financeiro Mensal | Meta: Investir 20% do Salário</p>
+        </div>
 
----
+        <div class="excel-note">
+            <strong>📋 INSTRUÇÕES PARA O EXCEL:</strong><br>
+            1. Copie cada tabela separadamente para o Excel<br>
+            2. As fórmulas estão indicadas - substitua pelos valores do Excel<br>
+            3. Use formatação condicional para destacar valores importantes<br>
+            4. Configure validação de dados nos campos de entrada
+        </div>
 
-## 📊 DASHBOARD - INDICADORES PRINCIPAIS
+        <!-- KPIs Dashboard -->
+        <div class="section">
+            <div class="section-header">📊 DASHBOARD - INDICADORES PRINCIPAIS</div>
+            <div class="section-content">
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-value">R$ 3.260</div>
+                        <div class="kpi-label">RECEITA TOTAL</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">R$ 430</div>
+                        <div class="kpi-label">META INVESTIMENTO</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">20%</div>
+                        <div class="kpi-label">TAXA POUPANÇA</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">R$ 844</div>
+                        <div class="kpi-label">SALDO LIVRE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-| **INDICADOR** | **VALOR** | **DESCRIÇÃO** |
-|---|---|---|
-| 💵 **RECEITA TOTAL** | `R$ 3.260,00` | Soma de todas as receitas mensais |
-| 🎯 **META INVESTIMENTO** | `R$ 430,00` | 20% da receita para investimentos |
-| 📈 **TAXA POUPANÇA** | `20%` | Percentual destinado a investimentos |
-| 💳 **SALDO LIVRE** | `R$ 844,54` | Valor disponível após despesas e investimentos |
+        <!-- Receitas -->
+        <div class="section">
+            <div class="section-header">💰 RECEITAS MENSAIS</div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CÉLULA</th>
+                            <th>FONTE DE RECEITA</th>
+                            <th>VALOR</th>
+                            <th>FÓRMULA EXCEL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>B3</td>
+                            <td>Salário Líquido</td>
+                            <td class="value">R$ 2.150,00</td>
+                            <td class="formula">2150</td>
+                        </tr>
+                        <tr>
+                            <td>B4</td>
+                            <td>Vale Transporte</td>
+                            <td class="value">R$ 450,00</td>
+                            <td class="formula">450</td>
+                        </tr>
+                        <tr>
+                            <td>B5</td>
+                            <td>Vale Alimentação</td>
+                            <td class="value">R$ 660,00</td>
+                            <td class="formula">660</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>B6</td>
+                            <td><strong>TOTAL RECEITAS</strong></td>
+                            <td class="value"><strong>R$ 3.260,00</strong></td>
+                            <td class="formula">=SOMA(B3:B5)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
----
+        <!-- Despesas Fixas -->
+        <div class="section">
+            <div class="section-header">🏠 DESPESAS FIXAS OBRIGATÓRIAS</div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CÉLULA</th>
+                            <th>CATEGORIA</th>
+                            <th>DESCRIÇÃO</th>
+                            <th>VALOR</th>
+                            <th>% RECEITA</th>
+                            <th>FÓRMULA %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>C10</td>
+                            <td>Moradia</td>
+                            <td>Aluguel (água, luz, internet inclusos)</td>
+                            <td class="value">R$ 1.600,00</td>
+                            <td class="value">49,1%</td>
+                            <td class="formula">=C10/$B$6</td>
+                        </tr>
+                        <tr>
+                            <td>C11</td>
+                            <td>Transporte</td>
+                            <td>Seguro do Carro</td>
+                            <td class="value">R$ 385,46</td>
+                            <td class="value">11,8%</td>
+                            <td class="formula">=C11/$B$6</td>
+                        </tr>
+                        <tr>
+                            <td>C12</td>
+                            <td>Transporte</td>
+                            <td>Gasolina</td>
+                            <td class="value">Vale Transporte</td>
+                            <td class="value">0%</td>
+                            <td class="formula">0</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>C13</td>
+                            <td colspan="2"><strong>SUBTOTAL DESPESAS FIXAS</strong></td>
+                            <td class="value"><strong>R$ 1.985,46</strong></td>
+                            <td class="value"><strong>60,9%</strong></td>
+                            <td class="formula">=SOMA(C10:C11)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-## 💰 RECEITAS MENSAIS (EDITÁVEL)
+        <!-- Investimentos -->
+        <div class="section">
+            <div class="section-header">📈 METAS DE INVESTIMENTO</div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CÉLULA</th>
+                            <th>OBJETIVO</th>
+                            <th>VALOR</th>
+                            <th>% SALÁRIO</th>
+                            <th>FÓRMULA</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="priority">
+                            <td>D17</td>
+                            <td>Meta de Investimento Mensal</td>
+                            <td class="value">R$ 430,00</td>
+                            <td class="value">20%</td>
+                            <td class="formula">=B3*0,2</td>
+                            <td>✅ PRIORITÁRIO</td>
+                        </tr>
+                        <tr class="info">
+                            <td>D18</td>
+                            <td>Projeção Anual</td>
+                            <td class="value">R$ 5.160,00</td>
+                            <td class="value">240%</td>
+                            <td class="formula">=D17*12</td>
+                            <td>📊 META ANUAL</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-| **FONTE DE RECEITA** | **VALOR (R$)** |
-|---|---|
-| Salário Líquido | `2150.00` |
-| Vale Transporte | `450.00` |
-| Vale Alimentação | `660.00` |
-| **TOTAL RECEITAS** | **`=sum(2150+450+660)`** |
+        <!-- Cálculo Saldo -->
+        <div class="section">
+            <div class="section-header">🧮 CÁLCULO DO SALDO DISPONÍVEL</div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CÉLULA</th>
+                            <th>DESCRIÇÃO</th>
+                            <th>VALOR</th>
+                            <th>FÓRMULA EXCEL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>E22</td>
+                            <td>Total Receitas</td>
+                            <td class="value">R$ 3.260,00</td>
+                            <td class="formula">=B6</td>
+                        </tr>
+                        <tr>
+                            <td>E23</td>
+                            <td>(-) Despesas Fixas</td>
+                            <td class="value">R$ 1.985,46</td>
+                            <td class="formula">=C13</td>
+                        </tr>
+                        <tr>
+                            <td>E24</td>
+                            <td>(-) Investimentos</td>
+                            <td class="value">R$ 430,00</td>
+                            <td class="formula">=D17</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>E25</td>
+                            <td><strong>= SALDO LIVRE MENSAL</strong></td>
+                            <td class="value"><strong>R$ 844,54</strong></td>
+                            <td class="formula">=E22-E23-E24</td>
+                        </tr>
+                        <tr class="info">
+                            <td>E26</td>
+                            <td><strong>= SALDO LIVRE DIÁRIO</strong></td>
+                            <td class="value"><strong>R$ 28,15</strong></td>
+                            <td class="formula">=E25/30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-> 💡 **Instruções:** Edite os valores acima diretamente nas células para atualizar suas receitas.
+        <!-- Distribuição Saldo -->
+        <div class="section">
+            <div class="section-header">📋 DISTRIBUIÇÃO DO SALDO LIVRE (R$ 844,54)</div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CÉLULA</th>
+                            <th>CATEGORIA</th>
+                            <th>ITEM</th>
+                            <th>VALOR MENSAL</th>
+                            <th>VALOR DIÁRIO</th>
+                            <th>FÓRMULA DIÁRIA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>D30</td>
+                            <td>Saúde</td>
+                            <td>Medicamentos/Consultas</td>
+                            <td class="value">R$ 80,00</td>
+                            <td class="value">R$ 2,67</td>
+                            <td class="formula">=D30/30</td>
+                        </tr>
+                        <tr>
+                            <td>D31</td>
+                            <td>Casa</td>
+                            <td>Produtos Limpeza/Higiene</td>
+                            <td class="value">R$ 100,00</td>
+                            <td class="value">R$ 3,33</td>
+                            <td class="formula">=D31/30</td>
+                        </tr>
+                        <tr>
+                            <td>D32</td>
+                            <td>Pessoal</td>
+                            <td>Vestuário</td>
+                            <td class="value">R$ 70,00</td>
+                            <td class="value">R$ 2,33</td>
+                            <td class="formula">=D32/30</td>
+                        </tr>
+                        <tr>
+                            <td>D33</td>
+                            <td>Lazer</td>
+                            <td>Entretenimento</td>
+                            <td class="value">R$ 120,00</td>
+                            <td class="value">R$ 4,00</td>
+                            <td class="formula">=D33/30</td>
+                        </tr>
+                        <tr>
+                            <td>D34</td>
+                            <td>Carro</td>
+                            <td>Manutenção/Imprevistos</td>
+                            <td class="value">R$ 80,00</td>
+                            <td class="value">R$ 2,67</td>
+                            <td class="formula">=D34/30</td>
+                        </tr>
+                        <tr>
+                            <td>D35</td>
+                            <td>Emergência</td>
+                            <td>Fundo Emergencial</td>
+                            <td class="value">R$ 200,00</td>
+                            <td class="value">R$ 6,67</td>
+                            <td class="formula">=D35/30</td>
+                        </tr>
+                        <tr>
+                            <td>D36</td>
+                            <td>Reserva</td>
+                            <td>Sobra/Flexibilidade</td>
+                            <td class="value">R$ 194,54</td>
+                            <td class="value">R$ 6,48</td>
+                            <td class="formula">=D36/30</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>D37</td>
+                            <td colspan="2"><strong>TOTAL SALDO LIVRE</strong></td>
+                            <td class="value"><strong>R$ 844,54</strong></td>
+                            <td class="value"><strong>R$ 28,15</strong></td>
+                            <td class="formula">=SOMA(D30:D36)/30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
----
+        <!-- Controle Semanal -->
+        <div class="section">
+            <div class="section-header">📅 CONTROLE SEMANAL DE GASTOS</div>
+            <div class="section-content">
+                <table class="control-table">
+                    <thead>
+                        <tr>
+                            <th>SEMANA</th>
+                            <th>ORÇADO</th>
+                            <th>GASTO REAL</th>
+                            <th>DIFERENÇA</th>
+                            <th>FÓRMULA DIFERENÇA</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Semana 1</td>
+                            <td class="value">R$ 211,14</td>
+                            <td style="background-color: #fff2cc;">INSERIR</td>
+                            <td class="formula">=B41-C41</td>
+                            <td class="formula">=SE(D41>0;"✅";"⚠️")</td>
+                            <td class="status-pending">PENDENTE</td>
+                        </tr>
+                        <tr>
+                            <td>Semana 2</td>
+                            <td class="value">R$ 211,14</td>
+                            <td style="background-color: #fff2cc;">INSERIR</td>
+                            <td class="formula">=B42-C42</td>
+                            <td class="formula">=SE(D42>0;"✅";"⚠️")</td>
+                            <td class="status-pending">PENDENTE</td>
+                        </tr>
+                        <tr>
+                            <td>Semana 3</td>
+                            <td class="value">R$ 211,14</td>
+                            <td style="background-color: #fff2cc;">INSERIR</td>
+                            <td class="formula">=B43-C43</td>
+                            <td class="formula">=SE(D43>0;"✅";"⚠️")</td>
+                            <td class="status-pending">PENDENTE</td>
+                        </tr>
+                        <tr>
+                            <td>Semana 4</td>
+                            <td class="value">R$ 211,12</td>
+                            <td style="background-color: #fff2cc;">INSERIR</td>
+                            <td class="formula">=B44-C44</td>
+                            <td class="formula">=SE(D44>0;"✅";"⚠️")</td>
+                            <td class="status-pending">PENDENTE</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>TOTAL MÊS</strong></td>
+                            <td class="value"><strong>R$ 844,54</strong></td>
+                            <td class="formula"><strong>=SOMA(C41:C44)</strong></td>
+                            <td class="formula"><strong>=B45-C45</strong></td>
+                            <td></td>
+                            <td><strong>ACOMPANHAR</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-## 🏠 DESPESAS FIXAS OBRIGATÓRIAS (EDITÁVEL)
+        <!-- Checklist de Ações -->
+        <div class="section">
+            <div class="section-header">✅ CHECKLIST DE AÇÕES MENSAIS</div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>PRIORIDADE</th>
+                            <th>AÇÃO</th>
+                            <th>PRAZO</th>
+                            <th>STATUS</th>
+                            <th>OBSERVAÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="priority">
+                            <td>ALTA</td>
+                            <td>Configurar investimento automático de R$ 430</td>
+                            <td>Dia 5</td>
+                            <td>⏳ PENDENTE</td>
+                            <td>Todo dia 5 após salário</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>ALTA</td>
+                            <td>Pesquisar novo seguro do carro</td>
+                            <td>15 dias</td>
+                            <td>⏳ PENDENTE</td>
+                            <td>Meta: economizar R$ 50-80</td>
+                        </tr>
+                        <tr>
+                            <td>MÉDIA</td>
+                            <td>Organizar uso completo dos vales</td>
+                            <td>7 dias</td>
+                            <td>⏳ PENDENTE</td>
+                            <td>Vale Alimentação + Transporte</td>
+                        </tr>
+                        <tr>
+                            <td>BAIXA</td>
+                            <td>Avaliar oportunidades de renda extra</td>
+                            <td>30 dias</td>
+                            <td>⏳ PENDENTE</td>
+                            <td>Meta: R$ 200-500 extras</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-| **CATEGORIA** | **DESCRIÇÃO** | **VALOR (R$)** | **% RECEITA** |
-|---|---|---|---|
-| Moradia | Aluguel (água, luz, internet inclusos) | `1600.00` | `49.1%` |
-| Transporte | Seguro do Carro | `385.46` | `11.8%` |
-| Transporte | Gasolina | `0.00` | `0%` |
-| **SUBTOTAL DESPESAS FIXAS** | | **`=sum(1600+385.46+0)`** | **`60.9%`** |
+        <!-- Resumo Final -->
+        <div class="section">
+            <div class="section-header">📊 RESUMO EXECUTIVO</div>
+            <div class="section-content">
+                <div class="kpi-grid">
+                    <div class="kpi-card" style="background: linear-gradient(135deg, #dcfce7, #bbf7d0);">
+                        <div class="kpi-value" style="color: #16a34a;">VIÁVEL ✓</div>
+                        <div class="kpi-label">STATUS DA META</div>
+                    </div>
+                    <div class="kpi-card" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">
+                        <div class="kpi-value" style="color: #d97706;">74%</div>
+                        <div class="kpi-label">COMPROMETIMENTO MORADIA</div>
+                    </div>
+                    <div class="kpi-card" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">
+                        <div class="kpi-value" style="color: #2563eb;">R$ 394</div>
+                        <div class="kpi-label">MARGEM SEGURANÇA</div>
+                    </div>
+                    <div class="kpi-card" style="background: linear-gradient(135deg, #f3e8ff, #e9d5ff);">
+                        <div class="kpi-value" style="color: #9333ea;">R$ 5.880</div>
+                        <div class="kpi-label">POTENCIAL ANUAL</div>
+                    </div>
+                </div>
+                
+                <p><strong>SITUAÇÃO ATUAL:</strong> Orçamento equilibrado com margem de segurança adequada</p>
+                <p><strong>PRÓXIMOS PASSOS:</strong> Implementar controle automático e otimizar seguro do carro</p>
+                <p><strong>OPORTUNIDADES:</strong> Com otimizações, possível economizar R$ 720 extras por ano</p>
+            </div>
+        </div>
 
-> 💡 **Instruções:** Edite os valores das despesas para refletir sua realidade financeira.
-
----
-
-## 📈 METAS DE INVESTIMENTO (CONFIGURÁVEL)
-
-| **OBJETIVO** | **VALOR (R$)** | **% SALÁRIO** | **STATUS** |
-|---|---|---|---|
-| Meta de Investimento Mensal | `430.00` | `20%` | ✅ PRIORITÁRIO |
-| Projeção Anual | `=430*12` | `240%` | 📊 META ANUAL |
-
-### 🎛️ **Configuração da Taxa de Investimento:**
-- **Taxa Atual:** `20%`
-- **Para alterar:** Modifique o percentual acima e os valores se ajustarão automaticamente
-
----
-
-## 🧮 CÁLCULO DO SALDO DISPONÍVEL
-
-| **DESCRIÇÃO** | **VALOR (R$)** |
-|---|---|
-| Total Receitas | `=3260.00` |
-| (-) Despesas Fixas | `=1985.46` |
-| (-) Investimentos | `=430.00` |
-| **= SALDO LIVRE MENSAL** | **`=3260-1985.46-430`** |
-| **= SALDO LIVRE DIÁRIO** | **`=844.54/30`** |
-
----
-
-## 📋 DISTRIBUIÇÃO DO SALDO LIVRE (INTERATIVA)
-
-| **CATEGORIA** | **ITEM** | **VALOR MENSAL (R$)** | **VALOR DIÁRIO (R$)** | **AJUSTAR** |
-|---|---|---|---|---|
-| 🏥 Saúde | Medicamentos/Consultas | `80.00` | `=80/30` | ⚙️ |
-| 🏠 Casa | Produtos Limpeza/Higiene | `100.00` | `=100/30` | ⚙️ |
-| 👕 Pessoal | Vestuário | `70.00` | `=70/30` | ⚙️ |
-| 🎮 Lazer | Entretenimento | `120.00` | `=120/30` | ⚙️ |
-| 🚗 Carro | Manutenção/Imprevistos | `80.00` | `=80/30` | ⚙️ |
-| 🚨 Emergência | Fundo Emergencial | `200.00` | `=200/30` | ⚙️ |
-| 💰 Reserva | Sobra/Flexibilidade | `194.54` | `=194.54/30` | ⚙️ |
-| **TOTAL SALDO LIVRE** | | **`=sum(80+100+70+120+80+200+194.54)`** | **`=844.54/30`** | |
-
-> 💡 **Como usar:** Clique em ⚙️ para ajustar os valores de cada categoria conforme suas necessidades.
-
----
-
-## 📅 CONTROLE SEMANAL DE GASTOS (INTERATIVO)
-
-| **SEMANA** | **ORÇADO (R$)** | **GASTO REAL (R$)** | **DIFERENÇA (R$)** | **STATUS** |
-|---|---|---|---|---|
-| Semana 1 | `211.14` | `[INSERIR VALOR]` | `=211.14-[GASTO]` | 🔄 PENDENTE |
-| Semana 2 | `211.14` | `[INSERIR VALOR]` | `=211.14-[GASTO]` | 🔄 PENDENTE |
-| Semana 3 | `211.14` | `[INSERIR VALOR]` | `=211.14-[GASTO]` | 🔄 PENDENTE |
-| Semana 4 | `211.12` | `[INSERIR VALOR]` | `=211.12-[GASTO]` | 🔄 PENDENTE |
-| **TOTAL MÊS** | **`844.54`** | **`=sum([GASTOS])`** | **`=844.54-[TOTAL_GASTOS]`** | **📊 ACOMPANHAR** |
-
-### 📝 **Instruções de Uso:**
-1. Substitua `[INSERIR VALOR]` pelos gastos reais de cada semana
-2. As diferenças e status serão calculados automaticamente
-3. Verde = dentro do orçamento | Vermelho = acima do orçamento
-
----
-
-## ✅ CHECKLIST DE AÇÕES MENSAIS (INTERATIVO)
-
-### 🔴 **ALTA PRIORIDADE**
-- [ ] **Configurar investimento automático de R$ 430** (Prazo: Dia 5)
-  - 📝 *Observação: Todo dia 5 após salário*
-  - 📅 *Status: PENDENTE*
-
-- [ ] **Pesquisar novo seguro do carro** (Prazo: 15 dias)
-  - 📝 *Observação: Meta: economizar R$ 50-80*
-  - 📅 *Status: PENDENTE*
-
-### 🟡 **MÉDIA PRIORIDADE**
-- [ ] **Organizar uso completo dos vales** (Prazo: 7 dias)
-  - 📝 *Observação: Vale Alimentação + Transporte*
-  - 📅 *Status: PENDENTE*
-
-### 🟢 **BAIXA PRIORIDADE**
-- [ ] **Avaliar oportunidades de renda extra** (Prazo: 30 dias)
-  - 📝 *Observação: Meta: R$ 200-500 extras*
-  - 📅 *Status: PENDENTE*
-
-> 💡 **Como usar:** Marque as caixas ✅ conforme completar as tarefas. O Notion atualizará automaticamente o progresso.
-
----
-
-## 📊 RESUMO EXECUTIVO
-
-### 🎯 **INDICADORES DE PERFORMANCE**
-
-| **MÉTRICA** | **VALOR** | **STATUS** |
-|---|---|---|
-| 🟢 **Viabilidade da Meta** | VIÁVEL ✓ | Aprovado |
-| 🟡 **Comprometimento Moradia** | 74% | Atenção |
-| 🔵 **Margem de Segurança** | R$ 394,54 | Adequada |
-| 🟣 **Potencial Anual** | R$ 5.880,00 | Excelente |
-
-### 📈 **ANÁLISE SITUACIONAL**
-
-**🔍 SITUAÇÃO ATUAL:** Orçamento equilibrado com margem de segurança adequada
-
-**🎯 PRÓXIMOS PASSOS:** 
-- Implementar controle automático de investimentos
-- Otimizar seguro do carro para reduzir custos
-
-**💡 OPORTUNIDADES:** 
-- Com otimizações, possível economizar R$ 720 extras por ano
-- Potencial para aumentar taxa de investimento para 25%
-
----
-
-## 🎛️ PAINEL DE CONTROLE RÁPIDO
-
-### ⚡ **AÇÕES RÁPIDAS**
-- 🔄 **Atualizar Receitas:** Modifique a tabela de receitas mensais
-- 💸 **Ajustar Despesas:** Edite valores na seção de despesas fixas
-- 📊 **Rebalancear Investimentos:** Altere o percentual de investimento
-- ✅ **Marcar Tarefas:** Use o checklist interativo
-- 📅 **Registrar Gastos:** Atualize o controle semanal
-
-### 📱 **LEMBRETES IMPORTANTES**
-> 💡 **DICA DIÁRIA:** Mantenha gastos abaixo de R$ 28,15 por dia para equilibrar o orçamento!
-
-> 📅 **REVISÃO:** Atualize esta planilha mensalmente para manter controle financeiro
-
-> 🎯 **META:** Foque em manter 20% de investimento e construir reserva de emergência
-
----
-
-*📊 Última atualização: Dezembro 2024 | 🔄 Revisão recomendada: Mensal*
-
-**🚀 Versão Notion Interativa - Todos os valores são editáveis e fórmulas se atualizam automaticamente!**
+        <div style="text-align: center; margin-top: 30px; padding: 20px; background-color: #f8fafc; border-radius: 8px;">
+            <p><strong>💡 DICA EXCEL:</strong> Use formatação condicional para destacar valores que excedem o orçado!</p>
+            <p><em>Última atualização: Junho 2025 | Revisão recomendada: Mensal</em></p>
+        </div>
+    </div>
+</body>
+</html>
