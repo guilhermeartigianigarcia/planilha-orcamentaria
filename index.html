@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planilha Orçamentária - Excel 365</title>
+    <title>Planilha Orçamentária Interativa</title>
     <style>
         body {
             font-family: Calibri, Arial, sans-serif;
@@ -128,16 +128,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>PLANILHA ORÇAMENTÁRIA - EXCEL 365</h1>
+            <h1>PLANILHA ORÇAMENTÁRIA INTERATIVA</h1>
             <p>Plano Financeiro Mensal | Meta: Investir 20% do Salário</p>
-        </div>
-
-        <div class="excel-note">
-            <strong>📋 INSTRUÇÕES PARA O EXCEL:</strong><br>
-            1. Copie cada tabela separadamente para o Excel<br>
-            2. As fórmulas estão indicadas - substitua pelos valores do Excel<br>
-            3. Use formatação condicional para destacar valores importantes<br>
-            4. Configure validação de dados nos campos de entrada
         </div>
 
         <!-- KPIs Dashboard -->
@@ -146,19 +138,19 @@
             <div class="section-content">
                 <div class="kpi-grid">
                     <div class="kpi-card">
-                        <div class="kpi-value">R$ 3.260</div>
+                        <div class="kpi-value" id="receita-total">R$ 3.260</div>
                         <div class="kpi-label">RECEITA TOTAL</div>
                     </div>
                     <div class="kpi-card">
-                        <div class="kpi-value">R$ 430</div>
+                        <div class="kpi-value" id="meta-investimento">R$ 430</div>
                         <div class="kpi-label">META INVESTIMENTO</div>
                     </div>
                     <div class="kpi-card">
-                        <div class="kpi-value">20%</div>
+                        <div class="kpi-value" id="taxa-poupanca">20%</div>
                         <div class="kpi-label">TAXA POUPANÇA</div>
                     </div>
                     <div class="kpi-card">
-                        <div class="kpi-value">R$ 844</div>
+                        <div class="kpi-value" id="saldo-livre">R$ 844</div>
                         <div class="kpi-label">SALDO LIVRE</div>
                     </div>
                 </div>
@@ -172,36 +164,31 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>CÉLULA</th>
                             <th>FONTE DE RECEITA</th>
                             <th>VALOR</th>
-                            <th>FÓRMULA EXCEL</th>
+                            <th>AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>B3</td>
                             <td>Salário Líquido</td>
-                            <td class="value">R$ 2.150,00</td>
-                            <td class="formula">2150</td>
+                            <td class="value"><input type="number" id="salario" value="2150" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
+                            <td>💰</td>
                         </tr>
                         <tr>
-                            <td>B4</td>
                             <td>Vale Transporte</td>
-                            <td class="value">R$ 450,00</td>
-                            <td class="formula">450</td>
+                            <td class="value"><input type="number" id="vale-transporte" value="450" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
+                            <td>🚌</td>
                         </tr>
                         <tr>
-                            <td>B5</td>
                             <td>Vale Alimentação</td>
-                            <td class="value">R$ 660,00</td>
-                            <td class="formula">660</td>
+                            <td class="value"><input type="number" id="vale-alimentacao" value="660" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
+                            <td>🍽️</td>
                         </tr>
                         <tr class="total-row">
-                            <td>B6</td>
                             <td><strong>TOTAL RECEITAS</strong></td>
-                            <td class="value"><strong>R$ 3.260,00</strong></td>
-                            <td class="formula">=SOMA(B3:B5)</td>
+                            <td class="value"><strong id="total-receitas">R$ 3.260,00</strong></td>
+                            <td>📊</td>
                         </tr>
                     </tbody>
                 </table>
@@ -215,45 +202,40 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>CÉLULA</th>
                             <th>CATEGORIA</th>
                             <th>DESCRIÇÃO</th>
                             <th>VALOR</th>
                             <th>% RECEITA</th>
-                            <th>FÓRMULA %</th>
+                            <th>AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>C10</td>
                             <td>Moradia</td>
                             <td>Aluguel (água, luz, internet inclusos)</td>
-                            <td class="value">R$ 1.600,00</td>
-                            <td class="value">49,1%</td>
-                            <td class="formula">=C10/$B$6</td>
+                            <td class="value"><input type="number" id="aluguel" value="1600" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
+                            <td class="value" id="perc-aluguel">49,1%</td>
+                            <td>🏠</td>
                         </tr>
                         <tr>
-                            <td>C11</td>
                             <td>Transporte</td>
                             <td>Seguro do Carro</td>
-                            <td class="value">R$ 385,46</td>
-                            <td class="value">11,8%</td>
-                            <td class="formula">=C11/$B$6</td>
+                            <td class="value"><input type="number" id="seguro" value="385.46" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
+                            <td class="value" id="perc-seguro">11,8%</td>
+                            <td>🚗</td>
                         </tr>
                         <tr>
-                            <td>C12</td>
                             <td>Transporte</td>
                             <td>Gasolina</td>
                             <td class="value">Vale Transporte</td>
                             <td class="value">0%</td>
-                            <td class="formula">0</td>
+                            <td>⛽</td>
                         </tr>
                         <tr class="total-row">
-                            <td>C13</td>
                             <td colspan="2"><strong>SUBTOTAL DESPESAS FIXAS</strong></td>
-                            <td class="value"><strong>R$ 1.985,46</strong></td>
-                            <td class="value"><strong>60,9%</strong></td>
-                            <td class="formula">=SOMA(C10:C11)</td>
+                            <td class="value"><strong id="total-despesas">R$ 1.985,46</strong></td>
+                            <td class="value"><strong id="perc-total-despesas">60,9%</strong></td>
+                            <td>📊</td>
                         </tr>
                     </tbody>
                 </table>
@@ -267,30 +249,27 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>CÉLULA</th>
                             <th>OBJETIVO</th>
                             <th>VALOR</th>
                             <th>% SALÁRIO</th>
-                            <th>FÓRMULA</th>
                             <th>STATUS</th>
+                            <th>AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="priority">
-                            <td>D17</td>
                             <td>Meta de Investimento Mensal</td>
-                            <td class="value">R$ 430,00</td>
+                            <td class="value" id="valor-investimento">R$ 430,00</td>
                             <td class="value">20%</td>
-                            <td class="formula">=B3*0,2</td>
                             <td>✅ PRIORITÁRIO</td>
+                            <td>📈</td>
                         </tr>
                         <tr class="info">
-                            <td>D18</td>
                             <td>Projeção Anual</td>
-                            <td class="value">R$ 5.160,00</td>
+                            <td class="value" id="projecao-anual">R$ 5.160,00</td>
                             <td class="value">240%</td>
-                            <td class="formula">=D17*12</td>
                             <td>📊 META ANUAL</td>
+                            <td>🎯</td>
                         </tr>
                     </tbody>
                 </table>
@@ -304,42 +283,85 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>CÉLULA</th>
                             <th>DESCRIÇÃO</th>
                             <th>VALOR</th>
-                            <th>FÓRMULA EXCEL</th>
+                            <th>STATUS</th>
+                            <th>AÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="success">
+                            <td>Saldo Disponível após Investimentos</td>
+                            <td class="value" id="saldo-disponivel">R$ 844,54</td>
+                            <td>✅ POSITIVO</td>
+                            <td>💰</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>Margem de Segurança</td>
+                            <td class="value"><input type="number" id="margem-seguranca" value="200" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
+                            <td>⚠️ RESERVA</td>
+                            <td>🛡️</td>
+                        </tr>
+                        <tr class="info">
+                            <td>Saldo Livre para Gastos Variáveis</td>
+                            <td class="value" id="saldo-gastos-variaveis">R$ 644,54</td>
+                            <td>💰 DISPONÍVEL</td>
+                            <td>🛒</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Distribuição Inteligente -->
+        <div class="section">
+            <div class="section-header">🎯 DISTRIBUIÇÃO INTELIGENTE DO SALDO</div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CATEGORIA</th>
+                            <th>% SALDO LIVRE</th>
+                            <th>VALOR SUGERIDO</th>
+                            <th>AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>E22</td>
-                            <td>Total Receitas</td>
-                            <td class="value">R$ 3.260,00</td>
-                            <td class="formula">=B6</td>
+                            <td>🍽️ Alimentação</td>
+                            <td class="value">40%</td>
+                            <td class="value" id="valor-alimentacao">R$ 257,82</td>
+                            <td>🍕</td>
                         </tr>
                         <tr>
-                            <td>E23</td>
-                            <td>(-) Despesas Fixas</td>
-                            <td class="value">R$ 1.985,46</td>
-                            <td class="formula">=C13</td>
+                            <td>🎯 Lazer & Entretenimento</td>
+                            <td class="value">25%</td>
+                            <td class="value" id="valor-lazer">R$ 161,14</td>
+                            <td>🎮</td>
                         </tr>
                         <tr>
-                            <td>E24</td>
-                            <td>(-) Investimentos</td>
-                            <td class="value">R$ 430,00</td>
-                            <td class="formula">=D17</td>
+                            <td>👕 Vestuário</td>
+                            <td class="value">15%</td>
+                            <td class="value" id="valor-vestuario">R$ 96,68</td>
+                            <td>👔</td>
+                        </tr>
+                        <tr>
+                            <td>🏥 Saúde & Bem-estar</td>
+                            <td class="value">10%</td>
+                            <td class="value" id="valor-saude">R$ 64,45</td>
+                            <td>💊</td>
+                        </tr>
+                        <tr>
+                            <td>📚 Educação & Cursos</td>
+                            <td class="value">10%</td>
+                            <td class="value" id="valor-educacao">R$ 64,45</td>
+                            <td>📖</td>
                         </tr>
                         <tr class="total-row">
-                            <td>E25</td>
-                            <td><strong>= SALDO LIVRE MENSAL</strong></td>
-                            <td class="value"><strong>R$ 844,54</strong></td>
-                            <td class="formula">=E22-E23-E24</td>
-                        </tr>
-                        <tr class="info">
-                            <td>E26</td>
-                            <td><strong>= SALDO LIVRE DIÁRIO</strong></td>
-                            <td class="value"><strong>R$ 28,15</strong></td>
-                            <td class="formula">=E25/30</td>
+                            <td><strong>TOTAL DISTRIBUIÇÃO</strong></td>
+                            <td class="value"><strong>100%</strong></td>
+                            <td class="value"><strong id="total-distribuicao">R$ 644,54</strong></td>
+                            <td>📊</td>
                         </tr>
                     </tbody>
                 </table>
@@ -503,6 +525,7 @@
                             <th>PRAZO</th>
                             <th>STATUS</th>
                             <th>OBSERVAÇÕES</th>
+                            <th>AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -512,6 +535,7 @@
                             <td>Dia 5</td>
                             <td>⏳ PENDENTE</td>
                             <td>Todo dia 5 após salário</td>
+                            <td>💼</td>
                         </tr>
                         <tr class="warning">
                             <td>ALTA</td>
@@ -519,6 +543,7 @@
                             <td>15 dias</td>
                             <td>⏳ PENDENTE</td>
                             <td>Meta: economizar R$ 50-80</td>
+                            <td>🔍</td>
                         </tr>
                         <tr>
                             <td>MÉDIA</td>
@@ -526,6 +551,7 @@
                             <td>7 dias</td>
                             <td>⏳ PENDENTE</td>
                             <td>Vale Alimentação + Transporte</td>
+                            <td>📈</td>
                         </tr>
                         <tr>
                             <td>BAIXA</td>
@@ -533,6 +559,7 @@
                             <td>30 dias</td>
                             <td>⏳ PENDENTE</td>
                             <td>Meta: R$ 200-500 extras</td>
+                            <td>📋</td>
                         </tr>
                     </tbody>
                 </table>
@@ -568,10 +595,117 @@
             </div>
         </div>
 
+        <!-- DICAS DE USO -->
+        <div class="section">
+            <div class="section-header">💡 DICAS DE USO</div>
+            <div class="section-content">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin: 10px 0;">
+                    <h3 style="margin: 0 0 10px 0;">🚀 Como usar esta planilha interativa:</h3>
+                    <p style="margin: 5px 0;">1. <strong>Atualize os valores</strong> nos campos editáveis (salário, benefícios, despesas)</p>
+                    <p style="margin: 5px 0;">2. <strong>Ajuste as despesas fixas</strong> conforme sua realidade</p>
+                    <p style="margin: 5px 0;">3. <strong>Monitore os KPIs</strong> do dashboard que se atualizam automaticamente</p>
+                    <p style="margin: 5px 0;">4. <strong>Configure sua margem de segurança</strong> para emergências</p>
+                    <p style="margin: 5px 0;">5. <strong>Acompanhe a distribuição</strong> sugerida do seu saldo livre</p>
+                </div>
+            </div>
+        </div>
+
         <div style="text-align: center; margin-top: 30px; padding: 20px; background-color: #f8fafc; border-radius: 8px;">
-            <p><strong>💡 DICA EXCEL:</strong> Use formatação condicional para destacar valores que excedem o orçado!</p>
-            <p><em>Última atualização: Junho 2025 | Revisão recomendada: Mensal</em></p>
+            <p><strong>💡 PLANILHA INTERATIVA:</strong> Todos os valores são editáveis e se atualizam automaticamente!</p>
+            <p><em>Última atualização: Dezembro 2024 | Revisão recomendada: Mensal</em></p>
         </div>
     </div>
+
+    <script>
+        function formatarMoeda(valor) {
+            return 'R$ ' + valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function calcularTotais() {
+            // Obter valores das receitas
+            const salario = parseFloat(document.getElementById('salario').value) || 0;
+            const valeTransporte = parseFloat(document.getElementById('vale-transporte').value) || 0;
+            const valeAlimentacao = parseFloat(document.getElementById('vale-alimentacao').value) || 0;
+            
+            // Calcular total de receitas
+            const totalReceitas = salario + valeTransporte + valeAlimentacao;
+            
+            // Obter valores das despesas fixas
+            const aluguel = parseFloat(document.getElementById('aluguel').value) || 0;
+            const seguro = parseFloat(document.getElementById('seguro').value) || 0;
+            
+            // Calcular total de despesas fixas
+            const totalDespesas = aluguel + seguro;
+            
+            // Atualizar despesas fixas
+            document.getElementById('total-despesas').textContent = formatarMoeda(totalDespesas);
+            
+            // Calcular percentuais das despesas
+            if (totalReceitas > 0) {
+                const percAluguel = (aluguel / totalReceitas) * 100;
+                const percSeguro = (seguro / totalReceitas) * 100;
+                const percTotalDespesas = (totalDespesas / totalReceitas) * 100;
+                
+                document.getElementById('perc-aluguel').textContent = percAluguel.toFixed(1) + '%';
+                document.getElementById('perc-seguro').textContent = percSeguro.toFixed(1) + '%';
+                document.getElementById('perc-total-despesas').textContent = percTotalDespesas.toFixed(1) + '%';
+            }
+            
+            // Atualizar displays
+            document.getElementById('total-receitas').textContent = formatarMoeda(totalReceitas);
+            document.getElementById('receita-total').textContent = formatarMoeda(totalReceitas);
+            
+            // Calcular meta de investimento (20% do salário)
+            const metaInvestimento = salario * 0.2;
+            document.getElementById('meta-investimento').textContent = formatarMoeda(metaInvestimento);
+            document.getElementById('valor-investimento').textContent = formatarMoeda(metaInvestimento);
+            
+            // Calcular projeção anual
+            const projecaoAnual = metaInvestimento * 12;
+            document.getElementById('projecao-anual').textContent = formatarMoeda(projecaoAnual);
+            
+            // Calcular saldo livre (receitas - despesas fixas - investimentos)
+            const saldoLivre = totalReceitas - totalDespesas - metaInvestimento;
+            document.getElementById('saldo-livre').textContent = formatarMoeda(saldoLivre);
+            
+            // Atualizar saldo disponível
+            document.getElementById('saldo-disponivel').textContent = formatarMoeda(saldoLivre);
+            
+            // Obter margem de segurança
+            const margemSeguranca = parseFloat(document.getElementById('margem-seguranca').value) || 0;
+            
+            // Calcular saldo para gastos variáveis
+            const saldoGastosVariaveis = saldoLivre - margemSeguranca;
+            document.getElementById('saldo-gastos-variaveis').textContent = formatarMoeda(saldoGastosVariaveis);
+            
+            // Calcular distribuição do saldo livre
+            const valorAlimentacao = saldoGastosVariaveis * 0.40;
+            const valorLazer = saldoGastosVariaveis * 0.25;
+            const valorVestuario = saldoGastosVariaveis * 0.15;
+            const valorSaude = saldoGastosVariaveis * 0.10;
+            const valorEducacao = saldoGastosVariaveis * 0.10;
+            
+            document.getElementById('valor-alimentacao').textContent = formatarMoeda(valorAlimentacao);
+            document.getElementById('valor-lazer').textContent = formatarMoeda(valorLazer);
+            document.getElementById('valor-vestuario').textContent = formatarMoeda(valorVestuario);
+            document.getElementById('valor-saude').textContent = formatarMoeda(valorSaude);
+            document.getElementById('valor-educacao').textContent = formatarMoeda(valorEducacao);
+            document.getElementById('total-distribuicao').textContent = formatarMoeda(saldoGastosVariaveis);
+            
+            // Calcular taxa de poupança
+            const taxaPoupanca = totalReceitas > 0 ? (metaInvestimento / totalReceitas) * 100 : 0;
+            document.getElementById('taxa-poupanca').textContent = taxaPoupanca.toFixed(1) + '%';
+        }
+
+        // Inicializar cálculos quando a página carregar
+        window.onload = function() {
+            calcularTotais();
+        };
+        
+        // Também calcular quando qualquer input for alterado
+        document.addEventListener('DOMContentLoaded', function() {
+            calcularTotais();
+        });
+    </script>
 </body>
 </html>
