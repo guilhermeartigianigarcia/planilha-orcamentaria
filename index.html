@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planilha Orçamentária Interativa</title>
+    <title>Análise de Precificação - Futebol Entre Amigos</title>
     <style>
         body {
-            font-family: Calibri, Arial, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 20px;
             background-color: #f5f5f5;
         }
@@ -20,7 +20,7 @@
         }
         .header {
             text-align: center;
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            background: linear-gradient(135deg, #2d5a27, #4a7c59);
             color: white;
             padding: 20px;
             border-radius: 8px;
@@ -62,609 +62,300 @@
             text-align: right;
             font-weight: bold;
         }
-        .total-row {
-            background-color: #fef3c7;
-            font-weight: bold;
-        }
-        .priority {
-            background-color: #dcfce7;
-        }
-        .warning {
+        .current {
             background-color: #fef2f2;
+            color: #dc2626;
         }
-        .info {
+        .recommended {
+            background-color: #dcfce7;
+            color: #16a34a;
+        }
+        .alternative {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+        .analysis {
             background-color: #eff6ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
         }
-        .formula {
-            font-family: 'Courier New', monospace;
-            background-color: #f3f4f6;
+        .highlight {
+            background-color: #fbbf24;
             padding: 2px 4px;
             border-radius: 3px;
-            font-size: 12px;
+            font-weight: bold;
         }
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .kpi-card {
-            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        .problem {
+            background-color: #fee2e2;
+            border-left: 4px solid #dc2626;
             padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid #cbd5e1;
+            margin: 15px 0;
         }
-        .kpi-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #1e40af;
-        }
-        .kpi-label {
-            font-size: 12px;
-            color: #64748b;
-            margin-top: 5px;
-        }
-        .excel-note {
-            background-color: #fef3c7;
-            border: 1px solid #f59e0b;
-            border-radius: 6px;
+        .solution {
+            background-color: #d1fae5;
+            border-left: 4px solid #10b981;
             padding: 15px;
-            margin-bottom: 20px;
-        }
-        .control-table td {
-            text-align: center;
-        }
-        .status-pending {
-            color: #dc2626;
-            font-weight: bold;
-        }
-        .status-done {
-            color: #16a34a;
-            font-weight: bold;
-        }
-        .status-ok {
-            color: #16a34a;
-            font-weight: bold;
-        }
-        .control-table input {
-            border: none;
-            background: transparent;
-            text-align: right;
-            font-weight: bold;
-            width: 100px;
-            color: #333;
-        }
-        .control-table input:focus {
-            outline: 2px solid #007bff;
-            background: #f8f9fa;
+            margin: 15px 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>PLANILHA ORÇAMENTÁRIA INTERATIVA</h1>
-            <p>Plano Financeiro Mensal | Meta: Investir 20% do Salário</p>
+            <h1>⚽ ANÁLISE DE PRECIFICAÇÃO</h1>
+            <p>Futebol Entre Amigos - Sustentabilidade Financeira</p>
         </div>
 
-        <!-- KPIs Dashboard -->
+        <!-- Análise Atual -->
         <div class="section">
-            <div class="section-header">📊 DASHBOARD - INDICADORES PRINCIPAIS</div>
+            <div class="section-header">📊 SITUAÇÃO ATUAL - ANÁLISE DOS DADOS</div>
             <div class="section-content">
-                <div class="kpi-grid">
-                    <div class="kpi-card">
-                        <div class="kpi-value" id="receita-total">R$ 3.260</div>
-                        <div class="kpi-label">RECEITA TOTAL</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-value" id="meta-investimento">R$ 430</div>
-                        <div class="kpi-label">META INVESTIMENTO</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-value" id="taxa-poupanca">20%</div>
-                        <div class="kpi-label">TAXA POUPANÇA</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-value" id="saldo-livre">R$ 844</div>
-                        <div class="kpi-label">SALDO LIVRE</div>
-                    </div>
+                <div class="analysis">
+                    <h3>💰 Estrutura de Custos Mensal (4 jogos)</h3>
+                    <ul>
+                        <li><strong>Campo:</strong> R$ 600,00 (60,6% dos custos)</li>
+                        <li><strong>Goleiros:</strong> R$ 320,00 (32,3% dos custos)</li>
+                        <li><strong>Administração:</strong> R$ 25,00 (2,5% dos custos)</li>
+                        <li><strong>Colete:</strong> R$ 40,00 (4,0% dos custos)</li>
+                        <li><strong>Taxa Bancária:</strong> R$ 5,00 (0,5% dos custos)</li>
+                        <li><strong>TOTAL MENSAL:</strong> <span class="highlight">R$ 990,00</span></li>
+                    </ul>
+                    
+                    <h3>💸 Receita Real Atual (com devoluções totais)</h3>
+                     <ul>
+                         <li><strong>Mensalistas Presentes:</strong> ~9 jogadores × R$ 14,00 × 4 jogos = R$ 504,00</li>
+                         <li><strong>Avulsos:</strong> ~5 jogadores × R$ 17,00 × 4 jogos = R$ 340,00</li>
+                         <li><strong>RECEITA REAL:</strong> <span class="highlight" style="color: #dc2626;">R$ 844,00</span></li>
+                         <li><strong>DÉFICIT MENSAL:</strong> <span class="highlight" style="color: #dc2626;">-R$ 146,00</span></li>
+                     </ul>
+                     
+                     <h3>💰 Projeção Nova Política (R$ 17,50 / R$ 20,00)</h3>
+                     <ul>
+                         <li><strong>Mensalistas (com política de faltas):</strong> ~R$ 647,50/mês</li>
+                         <li><strong>Avulsos:</strong> ~R$ 360,00/mês</li>
+                         <li><strong>RECEITA PROJETADA:</strong> <span class="highlight" style="color: #16a34a;">R$ 1.007,50</span></li>
+                         <li><strong>LUCRO PROJETADO:</strong> <span class="highlight" style="color: #16a34a;">+R$ 17,50</span></li>
+                     </ul>
+                     <p style="color: #dc2626; font-weight: bold;">* Baseado em média de 1,5 devoluções por jogo</p>
+                </div>
+
+                <div class="problem">
+                    <h3>🚨 PROBLEMAS IDENTIFICADOS</h3>
+                    <ul>
+                        <li><strong>Alta Taxa de Faltas:</strong> 3-4 mensalistas faltam por jogo (21-28% de ausência)</li>
+                        <li><strong>Sistema de Devolução TOTAL:</strong> TODOS os faltosos recebem devolução integral</li>
+                        <li><strong>Receita Real Baixa:</strong> Apenas mensalistas presentes pagam efetivamente</li>
+                        <li><strong>Situação Crítica:</strong> Operação no vermelho na maioria dos meses</li>
+                        <li><strong>Dependência Total de Avulsos:</strong> Essencial para cobrir déficit</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Receitas -->
+        <!-- Cenários de Precificação -->
         <div class="section">
-            <div class="section-header">💰 RECEITAS MENSAIS</div>
+            <div class="section-header">💡 PROPOSTAS DE PRECIFICAÇÃO</div>
             <div class="section-content">
                 <table>
                     <thead>
                         <tr>
-                            <th>FONTE DE RECEITA</th>
-                            <th>VALOR</th>
-                            <th>AÇÕES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Salário Líquido</td>
-                            <td class="value"><input type="number" id="salario" value="2150" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td>💰</td>
-                        </tr>
-                        <tr>
-                            <td>Vale Transporte</td>
-                            <td class="value"><input type="number" id="vale-transporte" value="450" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td>🚌</td>
-                        </tr>
-                        <tr>
-                            <td>Vale Alimentação</td>
-                            <td class="value"><input type="number" id="vale-alimentacao" value="660" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td>🍽️</td>
-                        </tr>
-                        <tr class="total-row">
-                            <td><strong>TOTAL RECEITAS</strong></td>
-                            <td class="value"><strong id="total-receitas">R$ 3.260,00</strong></td>
-                            <td>📊</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Despesas Fixas -->
-        <div class="section">
-            <div class="section-header">🏠 DESPESAS FIXAS OBRIGATÓRIAS</div>
-            <div class="section-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>CATEGORIA</th>
-                            <th>DESCRIÇÃO</th>
-                            <th>VALOR</th>
-                            <th>% RECEITA</th>
-                            <th>AÇÕES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Moradia</td>
-                            <td>Aluguel (água, luz, internet inclusos)</td>
-                            <td class="value"><input type="number" id="aluguel" value="1600" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="perc-aluguel">49,1%</td>
-                            <td>🏠</td>
-                        </tr>
-                        <tr>
-                            <td>Transporte</td>
-                            <td>Seguro do Carro</td>
-                            <td class="value"><input type="number" id="seguro" value="385.46" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="perc-seguro">11,8%</td>
-                            <td>🚗</td>
-                        </tr>
-                        <tr>
-                            <td>Transporte</td>
-                            <td>Gasolina</td>
-                            <td class="value">VT</td>
-                            <td class="value">0%</td>
-                            <td>⛽</td>
-                        </tr>
-                        <tr class="total-row">
-                            <td colspan="2"><strong>SUBTOTAL DESPESAS FIXAS</strong></td>
-                            <td class="value"><strong id="total-despesas">R$ 1.985,46</strong></td>
-                            <td class="value"><strong id="perc-total-despesas">60,9%</strong></td>
-                            <td>📊</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- DRE - Demonstração do Resultado -->
-        <div class="section">
-            <div class="section-header">📊 DRE - DEMONSTRAÇÃO DO RESULTADO</div>
-            <div class="section-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>DESCRIÇÃO</th>
-                            <th>VALOR</th>
-                            <th>AÇÕES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="priority">
-                            <td>Receita Total</td>
-                            <td class="value" id="dre-receita-total">R$ 3.260,00</td>
-                            <td>💰</td>
-                        </tr>
-                        <tr>
-                            <td>(-) Despesas Fixas</td>
-                            <td class="value" id="dre-despesas-fixas">R$ 1.985,46</td>
-                            <td>🏠</td>
-                        </tr>
-                        <tr>
-                            <td>(-) Despesas Variáveis</td>
-                            <td class="value"><input type="number" id="despesas-variaveis" value="0" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td>🛒</td>
-                        </tr>
-                        <tr>
-                            <td>(-) Investimentos</td>
-                            <td class="value" id="dre-investimentos">R$ 430,00</td>
-                            <td>📈</td>
-                        </tr>
-                        <tr>
-                            <td>(-) Reserva de Emergência</td>
-                            <td class="value">R$ 200,00</td>
-                            <td>🛡️</td>
-                        </tr>
-                        <tr class="total-row">
-                            <td><strong>= Saldo Disponível</strong></td>
-                            <td class="value"><strong id="saldo-disponivel-dre">R$ 644,54</strong></td>
-                            <td>💰</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Distribuição Inteligente -->
-        <div class="section">
-            <div class="section-header">🎯 DISTRIBUIÇÃO INTELIGENTE DO SALDO</div>
-            <div class="section-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>CATEGORIA</th>
-                            <th>VALOR MENSAL</th>
-                            <th>% DO SALDO DISPONÍVEL</th>
-                            <th>AÇÕES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>🍽️ Alimentação</td>
-                            <td class="value"><input type="number" id="dist-alimentacao" value="0" onchange="calcularDistribuicao()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="perc-alimentacao">0%</td>
-                            <td>🍕</td>
-                        </tr>
-                        <tr>
-                            <td>🎯 Lazer & Entretenimento</td>
-                            <td class="value"><input type="number" id="dist-lazer" value="0" onchange="calcularDistribuicao()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="perc-lazer">0%</td>
-                            <td>🎮</td>
-                        </tr>
-                        <tr>
-                            <td>🏠 Produtos de Casa</td>
-                            <td class="value"><input type="number" id="dist-casa" value="0" onchange="calcularDistribuicao()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="perc-casa">0%</td>
-                            <td>🏠</td>
-                        </tr>
-                        <tr>
-                            <td>🏥 Saúde & Bem-estar</td>
-                            <td class="value"><input type="number" id="dist-saude" value="0" onchange="calcularDistribuicao()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="perc-saude">0%</td>
-                            <td>💊</td>
-                        </tr>
-                        <tr>
-                            <td>📚 Educação & Cursos</td>
-                            <td class="value"><input type="number" id="dist-educacao" value="0" onchange="calcularDistribuicao()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="perc-educacao">0%</td>
-                            <td>📖</td>
-                        </tr>
-                        <tr>
-                            <td>🚗 Manutenção e Emergências</td>
-                            <td class="value"><input type="number" id="dist-manutencao" value="0" onchange="calcularDistribuicao()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="perc-manutencao">0%</td>
-                            <td>🚗</td>
-                        </tr>
-                        <tr class="total-row">
-                            <td><strong>TOTAL DISTRIBUIÇÃO</strong></td>
-                            <td class="value"><strong id="total-distribuicao-editavel">R$ 0,00</strong></td>
-                            <td class="value"><strong id="perc-total-distribuicao">0%</strong></td>
-                            <td>📊</td>
-                        </tr>
-                        <tr class="info">
-                            <td><strong>SALDO DISPONÍVEL (DRE)</strong></td>
-                            <td class="value"><strong id="saldo-disponivel-referencia">R$ 644,54</strong></td>
-                            <td class="value"><strong>100%</strong></td>
-                            <td>💰</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Controle Semanal -->
-        <div class="section">
-            <div class="section-header">📅 CONTROLE SEMANAL DE GASTOS</div>
-            <div class="section-content">
-                <table class="control-table">
-                    <thead>
-                        <tr>
-                            <th>SEMANA</th>
-                            <th>ORÇADO</th>
-                            <th>GASTO REAL</th>
-                            <th>DIFERENÇA</th>
+                            <th>CENÁRIO</th>
+                            <th>MENSALISTA</th>
+                            <th>AVULSO</th>
+                            <th>RECEITA MENSAL</th>
+                            <th>LUCRO MENSAL</th>
                             <th>STATUS</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Semana 1</td>
-                            <td class="value" id="orcado-sem1">R$ 161,14</td>
-                            <td class="value"><input type="number" id="gasto-sem1" value="0" onchange="calcularControle(1)" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="diff-sem1">R$ 0,00</td>
-                            <td id="status-sem1" class="status-pending">PENDENTE</td>
+                        <tr class="current">
+                            <td>ATUAL (devolução total)</td>
+                            <td>R$ 14,00/jogo</td>
+                            <td>R$ 17,00/jogo</td>
+                            <td>R$ 850,00*</td>
+                            <td>-R$ 140,00</td>
+                            <td>🔴 PREJUÍZO</td>
                         </tr>
-                        <tr>
-                            <td>Semana 2</td>
-                            <td class="value" id="orcado-sem2">R$ 161,14</td>
-                            <td class="value"><input type="number" id="gasto-sem2" value="0" onchange="calcularControle(2)" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="diff-sem2">R$ 0,00</td>
-                            <td id="status-sem2" class="status-pending">PENDENTE</td>
+                        <tr class="recommended">
+                            <td>RECOMENDADO</td>
+                            <td>R$ 17,50/jogo</td>
+                            <td>R$ 20,00/jogo</td>
+                            <td>R$ 1.040,00</td>
+                            <td>R$ 50,00</td>
+                            <td>✅ SUSTENTÁVEL</td>
                         </tr>
-                        <tr>
-                            <td>Semana 3</td>
-                            <td class="value" id="orcado-sem3">R$ 161,14</td>
-                            <td class="value"><input type="number" id="gasto-sem3" value="0" onchange="calcularControle(3)" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="diff-sem3">R$ 0,00</td>
-                            <td id="status-sem3" class="status-pending">PENDENTE</td>
+                        <tr class="alternative">
+                            <td>ALTERNATIVO 1</td>
+                            <td>R$ 16,50/jogo</td>
+                            <td>R$ 19,00/jogo</td>
+                            <td>R$ 988,00</td>
+                            <td>-R$ 2,00</td>
+                            <td>⚠️ LIMITE</td>
                         </tr>
-                        <tr>
-                            <td>Semana 4</td>
-                            <td class="value" id="orcado-sem4">R$ 161,12</td>
-                            <td class="value"><input type="number" id="gasto-sem4" value="0" onchange="calcularControle(4)" style="border:none; background:transparent; text-align:right; font-weight:bold; width:100px;"></td>
-                            <td class="value" id="diff-sem4">R$ 0,00</td>
-                            <td id="status-sem4" class="status-pending">PENDENTE</td>
-                        </tr>
-                        <tr class="total-row">
-                            <td><strong>TOTAL MÊS</strong></td>
-                            <td class="value"><strong id="total-orcado-mes">R$ 644,54</strong></td>
-                            <td class="value"><strong id="total-gasto-mes">R$ 0,00</strong></td>
-                            <td class="value"><strong id="total-diff-mes">R$ 644,54</strong></td>
-                            <td><strong>ACOMPANHAR</strong></td>
+                        <tr class="alternative">
+                            <td>ALTERNATIVO 2</td>
+                            <td>R$ 18,50/jogo</td>
+                            <td>R$ 22,00/jogo</td>
+                            <td>R$ 1.108,00</td>
+                            <td>R$ 118,00</td>
+                            <td>💰 CONFORTÁVEL</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Metas de Investimento -->
+        <!-- Proposta de Política de Faltas -->
         <div class="section">
-            <div class="section-header">📈 METAS DE INVESTIMENTO</div>
+            <div class="section-header">📋 NOVA POLÍTICA DE FALTAS</div>
             <div class="section-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>OBJETIVO</th>
-                            <th>% DO SALÁRIO</th>
-                            <th>VALOR</th>
-                            <th>STATUS</th>
-                            <th>AÇÕES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="priority">
-                            <td>Meta de Investimento Mensal</td>
-                            <td class="value"><input type="number" id="perc-investimento" value="20" onchange="calcularTotais()" style="border:none; background:transparent; text-align:right; font-weight:bold; width:60px;">%</td>
-                            <td class="value" id="valor-investimento-meta">R$ 430,00</td>
-                            <td>✅ PRIORITÁRIO</td>
-                            <td>📈</td>
-                        </tr>
-                        <tr class="info">
-                            <td>Projeção Anual</td>
-                            <td class="value" id="perc-anual">240%</td>
-                            <td class="value" id="projecao-anual-meta">R$ 5.160,00</td>
-                            <td>📊 META ANUAL</td>
-                            <td>🎯</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Checklist de Ações -->
-        <div class="section">
-            <div class="section-header">✅ CHECKLIST DE AÇÕES MENSAIS</div>
-            <div class="section-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>PRIORIDADE</th>
-                            <th>AÇÃO</th>
-                            <th>PRAZO</th>
-                            <th>STATUS</th>
-                            <th>OBSERVAÇÕES</th>
-                            <th>AÇÕES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="priority">
-                            <td>ALTA</td>
-                            <td>Configurar investimento automático de R$ 430</td>
-                            <td>Dia 5</td>
-                            <td>⏳ PENDENTE</td>
-                            <td>Todo dia 5 após salário</td>
-                            <td>💼</td>
-                        </tr>
-                        <tr class="warning">
-                            <td>ALTA</td>
-                            <td>Pesquisar novo seguro do carro</td>
-                            <td>15 dias</td>
-                            <td>⏳ PENDENTE</td>
-                            <td>Meta: economizar R$ 50-80</td>
-                            <td>🔍</td>
-                        </tr>
-                        <tr>
-                            <td>MÉDIA</td>
-                            <td>Organizar uso completo dos vales</td>
-                            <td>7 dias</td>
-                            <td>⏳ PENDENTE</td>
-                            <td>Vale Alimentação + Transporte</td>
-                            <td>📈</td>
-                        </tr>
-                        <tr>
-                            <td>BAIXA</td>
-                            <td>Avaliar oportunidades de renda extra</td>
-                            <td>30 dias</td>
-                            <td>⏳ PENDENTE</td>
-                            <td>Meta: R$ 200-500 extras</td>
-                            <td>📋</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Resumo Final -->
-        <div class="section">
-            <div class="section-header">📊 RESUMO EXECUTIVO</div>
-            <div class="section-content">
-                <div class="kpi-grid">
-                    <div class="kpi-card" style="background: linear-gradient(135deg, #dcfce7, #bbf7d0);">
-                        <div class="kpi-value" style="color: #16a34a;">VIÁVEL ✓</div>
-                        <div class="kpi-label">STATUS DA META</div>
-                    </div>
-                    <div class="kpi-card" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">
-                        <div class="kpi-value" style="color: #d97706;">74%</div>
-                        <div class="kpi-label">COMPROMETIMENTO MORADIA</div>
-                    </div>
-                    <div class="kpi-card" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">
-                        <div class="kpi-value" style="color: #2563eb;">R$ 394</div>
-                        <div class="kpi-label">MARGEM SEGURANÇA</div>
-                    </div>
-                    <div class="kpi-card" style="background: linear-gradient(135deg, #f3e8ff, #e9d5ff);">
-                        <div class="kpi-value" style="color: #9333ea;">R$ 5.880</div>
-                        <div class="kpi-label">POTENCIAL ANUAL</div>
-                    </div>
+                <div class="solution">
+                    <h3>🎯 PROPOSTA RECOMENDADA</h3>
+                    <h4>Sistema de Cobrança Sustentável:</h4>
+                    <ul>
+                        <li><strong>Mensalista:</strong> R$ 17,50 por jogo (R$ 70,00/mês)</li>
+                         <li><strong>Avulso:</strong> R$ 20,00 por jogo</li>
+                        <li><strong>Nova Política de Faltas:</strong>
+                            <ul>
+                                <li>✅ Até 1 falta por mês: Devolução integral</li>
+                                <li>⚠️ 2 faltas por mês: Devolução de 50%</li>
+                                <li>❌ 3+ faltas por mês: Sem devolução</li>
+                                <li>🔄 <strong>Alternativa:</strong> Sistema de crédito (falta vira crédito para próximo mês)</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-                
-                <p><strong>SITUAÇÃO ATUAL:</strong> Orçamento equilibrado com margem de segurança adequada</p>
-                <p><strong>PRÓXIMOS PASSOS:</strong> Implementar controle automático e otimizar seguro do carro</p>
-                <p><strong>OPORTUNIDADES:</strong> Com otimizações, possível economizar R$ 720 extras por ano</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CENÁRIO DE FALTAS</th>
+                            <th>RECEITA MENSALISTAS</th>
+                            <th>RECEITA AVULSOS</th>
+                            <th>RECEITA TOTAL</th>
+                            <th>LUCRO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background-color: #fee2e2;">
+                            <td>Situação Atual (devolução total)</td>
+                            <td>R$ 504,00</td>
+                            <td>R$ 340,00</td>
+                            <td>R$ 844,00</td>
+                            <td style="color: #dc2626; font-weight: bold;">-R$ 146,00</td>
+                        </tr>
+                        <tr>
+                             <td>Nova Política - Cenário Otimista (1 devolução/jogo)</td>
+                             <td>R$ 665,00</td>
+                             <td>R$ 320,00</td>
+                             <td>R$ 985,00</td>
+                             <td>-R$ 5,00</td>
+                         </tr>
+                         <tr class="recommended">
+                             <td>Nova Política - Cenário Realista (1,5 devolução/jogo)</td>
+                             <td>R$ 647,50</td>
+                             <td>R$ 360,00</td>
+                             <td>R$ 1.007,50</td>
+                             <td>R$ 17,50</td>
+                         </tr>
+                         <tr>
+                             <td>Nova Política - Cenário Conservador (2 devoluções/jogo)</td>
+                             <td>R$ 630,00</td>
+                             <td>R$ 400,00</td>
+                             <td>R$ 1.030,00</td>
+                             <td>R$ 40,00</td>
+                         </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <!-- DICAS DE USO -->
+        <!-- Implementação Gradual -->
         <div class="section">
-            <div class="section-header">💡 DICAS DE USO</div>
+            <div class="section-header">🚀 PLANO DE IMPLEMENTAÇÃO</div>
             <div class="section-content">
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin: 10px 0;">
-                    <h3 style="margin: 0 0 10px 0;">🚀 Como usar esta planilha interativa:</h3>
-                    <p style="margin: 5px 0;">1. <strong>Atualize os valores</strong> nos campos editáveis (salário, benefícios, despesas)</p>
-                    <p style="margin: 5px 0;">2. <strong>Ajuste as despesas fixas</strong> conforme sua realidade</p>
-                    <p style="margin: 5px 0;">3. <strong>Monitore os KPIs</strong> do dashboard que se atualizam automaticamente</p>
-                    <p style="margin: 5px 0;">4. <strong>Configure sua margem de segurança</strong> para emergências</p>
-                    <p style="margin: 5px 0;">5. <strong>Acompanhe a distribuição</strong> sugerida do seu saldo livre</p>
+                <div class="analysis">
+                    <h3>📅 Cronograma Sugerido (3 meses)</h3>
+                    
+                    <h4>MÊS 1 - Comunicação e Preparação</h4>
+                    <ul>
+                        <li>Apresentar análise financeira para o grupo</li>
+                        <li>Explicar necessidade de ajuste de preços</li>
+                        <li>Implementar sistema de controle de faltas</li>
+                        <li>Manter preços atuais</li>
+                    </ul>
+
+                    <h4>MÊS 2 - Implementação Parcial</h4>
+                    <ul>
+                        <li>Aumentar mensalista para R$ 16,00</li>
+                         <li>Aumentar avulso para R$ 18,50</li>
+                        <li>Implementar política de faltas (50% devolução após 2 faltas)</li>
+                    </ul>
+
+                    <h4>MÊS 3 - Implementação Completa</h4>
+                    <ul>
+                        <li>Ajustar para preços finais: R$ 17,50 (mensalista) / R$ 20,00 (avulso)</li>
+                        <li>Política de faltas completa</li>
+                        <li>Avaliar resultados financeiros</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefícios -->
+        <div class="section">
+            <div class="section-header">🎯 BENEFÍCIOS ESPERADOS</div>
+            <div class="section-content">
+                <div class="solution">
+                    <h3>💰 Impacto Financeiro</h3>
+                    <ul>
+                        <li><strong>Situação Atual:</strong> Prejuízo de R$ 146,00/mês</li>
+                        <li><strong>Com Nova Política:</strong> Lucro de R$ 17,50 a R$ 40,00/mês</li>
+                         <li><strong>Melhoria Total:</strong> +R$ 163,50 a R$ 186,00/mês</li>
+                         <li><strong>Fundo de Melhorias:</strong> R$ 210,00 a R$ 480,00/ano</li>
+                        <li><strong>Sustentabilidade:</strong> Operação finalmente viável</li>
+                    </ul>
+
+                    <h3>⚽ Melhorias Possíveis com o Fundo</h3>
+                    <ul>
+                        <li>Upgrade de equipamentos (coletes, bolas)</li>
+                        <li>Melhoria na qualidade dos goleiros</li>
+                        <li>Eventos especiais (confraternizações)</li>
+                        <li>Reserva para emergências</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusão -->
+        <div class="section">
+            <div class="section-header">✅ CONCLUSÃO E RECOMENDAÇÕES</div>
+            <div class="section-content">
+                <div class="analysis">
+                    <h3>🎯 Recomendação Final</h3>
+                    <p><strong>Implementar o Cenário Recomendado:</strong></p>
+                    <ul>
+                        <li><span class="highlight">Mensalista: R$ 17,50/jogo</span></li>
+                         <li><span class="highlight">Avulso: R$ 20,00/jogo</span></li>
+                        <li><span class="highlight">Nova política de faltas (essencial)</span></li>
+                    </ul>
+
+                    <p><strong>Justificativa:</strong></p>
+                    <ul>
+                        <li><strong>URGENTE:</strong> Elimina o prejuízo mensal atual</li>
+                        <li>Garante sustentabilidade financeira mínima</li>
+                        <li>Política de faltas reduz impacto das ausências</li>
+                        <li>Incentiva compromisso e reduz faltas desnecessárias</li>
+                        <li>Valores ainda razoáveis considerando a inflação</li>
+                        <li>Permite criação de reserva para emergências</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 30px; padding: 20px; background-color: #f8fafc; border-radius: 8px;">
-            <p><strong>💡 PLANILHA INTERATIVA:</strong> Todos os valores são editáveis e se atualizam automaticamente!</p>
-            <p><em>Última atualização: Dezembro 2024 | Revisão recomendada: Mensal</em></p>
+            <p><strong>⚽ FUTEBOL SUSTENTÁVEL:</strong> Diversão garantida com responsabilidade financeira!</p>
         </div>
     </div>
-
-    <script>
-        function formatarMoeda(valor) {
-            return 'R$ ' + valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
-
-        function calcularTotais() {
-            // Receitas
-            const salario = parseFloat(document.getElementById('salario').value) || 0;
-            const valeTransporte = parseFloat(document.getElementById('vale-transporte').value) || 0;
-            const valeAlimentacao = parseFloat(document.getElementById('vale-alimentacao').value) || 0;
-            const totalReceitas = salario + valeTransporte + valeAlimentacao;
-            document.getElementById('total-receitas').textContent = formatarMoeda(totalReceitas);
-
-            // Despesas Fixas
-            const aluguel = parseFloat(document.getElementById('aluguel').value) || 0;
-            const seguroCarro = parseFloat(document.getElementById('seguro').value) || 0;
-            const totalDespesasFixas = aluguel + seguroCarro;
-            document.getElementById('total-despesas').textContent = formatarMoeda(totalDespesasFixas);
-
-            // Calcular percentuais das despesas
-            if (totalReceitas > 0) {
-                const percAluguel = (aluguel / totalReceitas) * 100;
-                const percSeguro = (seguroCarro / totalReceitas) * 100;
-                const percTotalDespesas = (totalDespesasFixas / totalReceitas) * 100;
-                
-                document.getElementById('perc-aluguel').textContent = percAluguel.toFixed(1) + '%';
-                document.getElementById('perc-seguro').textContent = percSeguro.toFixed(1) + '%';
-                document.getElementById('perc-total-despesas').textContent = percTotalDespesas.toFixed(1) + '%';
-            }
-
-            // Atualizar displays
-            document.getElementById('receita-total').textContent = formatarMoeda(totalReceitas);
-
-            // Cálculos DRE
-            const despesasVariaveis = parseFloat(document.getElementById('despesas-variaveis').value) || 0;
-            const percInvestimento = parseFloat(document.getElementById('perc-investimento').value) || 20;
-            const investimentos = (salario * percInvestimento) / 100;
-            const reservaEmergencia = 200; // Fixo em R$ 200
-            
-            document.getElementById('meta-investimento').textContent = formatarMoeda(investimentos);
-            document.getElementById('valor-investimento-meta').textContent = formatarMoeda(investimentos);
-            document.getElementById('dre-investimentos').textContent = formatarMoeda(investimentos);
-            document.getElementById('perc-anual').textContent = (percInvestimento * 12).toFixed(0) + '%';
-            document.getElementById('projecao-anual-meta').textContent = formatarMoeda(investimentos * 12);
-            
-            // Atualizar DRE
-            document.getElementById('dre-receita-total').textContent = formatarMoeda(totalReceitas);
-            document.getElementById('dre-despesas-fixas').textContent = formatarMoeda(totalDespesasFixas);
-            
-            const saldoDisponivel = totalReceitas - totalDespesasFixas - despesasVariaveis - investimentos - reservaEmergencia;
-            document.getElementById('saldo-disponivel-dre').textContent = formatarMoeda(saldoDisponivel);
-            document.getElementById('saldo-disponivel-referencia').textContent = formatarMoeda(saldoDisponivel);
-
-            // Atualizar saldo livre no dashboard
-            document.getElementById('saldo-livre').textContent = formatarMoeda(saldoDisponivel);
-            
-            // Calcular taxa de poupança
-            const taxaPoupanca = totalReceitas > 0 ? (investimentos / totalReceitas) * 100 : 0;
-            document.getElementById('taxa-poupanca').textContent = taxaPoupanca.toFixed(1) + '%';
-
-            // Atualizar orçamento semanal (saldo disponível / 4)
-            const orcadoSemanal = saldoDisponivel / 4;
-            document.getElementById('orcado-sem1').textContent = formatarMoeda(orcadoSemanal);
-            document.getElementById('orcado-sem2').textContent = formatarMoeda(orcadoSemanal);
-            document.getElementById('orcado-sem3').textContent = formatarMoeda(orcadoSemanal);
-            document.getElementById('orcado-sem4').textContent = formatarMoeda(orcadoSemanal - 0.02); // Ajuste de centavos
-            document.getElementById('total-orcado-mes').textContent = formatarMoeda(saldoDisponivel);
-            
-            // Atualizar percentuais na distribuição inteligente
-             const alimentacao = parseFloat(document.getElementById('alimentacao-valor').value) || 0;
-             const lazer = parseFloat(document.getElementById('lazer-valor').value) || 0;
-             const produtosCasa = parseFloat(document.getElementById('produtos-casa-valor').value) || 0;
-             const saude = parseFloat(document.getElementById('saude-valor').value) || 0;
-             const educacao = parseFloat(document.getElementById('educacao-valor').value) || 0;
-             const manutencao = parseFloat(document.getElementById('manutencao-valor').value) || 0;
-
-             const totalDistribuicao = alimentacao + lazer + produtosCasa + saude + educacao + manutencao;
-             document.getElementById('total-distribuicao').textContent = formatarMoeda(totalDistribuicao);
-
-             // Calcular percentuais
-             if (saldoDisponivel > 0) {
-                 document.getElementById('alimentacao-perc').textContent = ((alimentacao / saldoDisponivel) * 100).toFixed(1) + '%';
-                 document.getElementById('lazer-perc').textContent = ((lazer / saldoDisponivel) * 100).toFixed(1) + '%';
-                 document.getElementById('produtos-casa-perc').textContent = ((produtosCasa / saldoDisponivel) * 100).toFixed(1) + '%';
-                 document.getElementById('saude-perc').textContent = ((saude / saldoDisponivel) * 100).toFixed(1) + '%';
-                 document.getElementById('educacao-perc').textContent = ((educacao / saldoDisponivel) * 100).toFixed(1) + '%';
-                 document.getElementById('manutencao-perc').textContent = ((manutencao / saldoDisponivel) * 100).toFixed(1) + '%';
-                 document.getElementById('total-perc').textContent = ((totalDistribuicao / saldoDisponivel) * 100).toFixed(1) + '%';
-             }
-         }
-
-        // Inicializar cálculos quando a página carregar
-        window.onload = function() {
-            calcularTotais();
-        };
-        
-        // Também calcular quando qualquer input for alterado
-        document.addEventListener('DOMContentLoaded', function() {
-            calcularTotais();
-        });
-    </script>
 </body>
 </html>
